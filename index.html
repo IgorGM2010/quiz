@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quiz educativo sobre Pronomes Relativos para estudantes do Ensino Médio.">
+    <meta name="author" content="Caio, Felipe, Heitor, Igor e Mateus">
+    <meta name="theme-color" content="#EF5350">
     <title>Quiz dos Pronomes Relativos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -319,12 +322,12 @@
 
             <div class="buttons-container" aria-label="Ações do Quiz">
                 <div class="btn-wrapper">
-                    <button class="comic-btn btn-start" onclick="startQuiz()" aria-label="Iniciar quiz" tabindex="0">
+                    <button type="button" class="comic-btn btn-start" onclick="startQuiz()" aria-label="Iniciar quiz" tabindex="0">
                         <span class="btn-icon" aria-hidden="true">▶</span> INICIAR QUIZ
                     </button>
                 </div>
                 <div class="btn-wrapper">
-                    <button class="comic-btn btn-info" onclick="showAboutScreen()" aria-label="Saiba mais" tabindex="0">
+                    <button type="button" class="comic-btn btn-info" onclick="showAboutScreen()" aria-label="Saiba mais" tabindex="0">
                         <span class="btn-icon" aria-hidden="true">📖</span> SAIBA MAIS
                     </button>
                 </div>
@@ -381,7 +384,7 @@
 
                 <div class="buttons-container about-animate" style="animation-delay: 0.4s;">
                     <div class="btn-wrapper">
-                        <button class="comic-btn btn-start" onclick="backToHome()" aria-label="Voltar para a tela inicial" tabindex="0">
+                        <button type="button" class="comic-btn btn-start" onclick="backToHome()" aria-label="Voltar para a tela inicial" tabindex="0">
                             <span class="btn-icon" aria-hidden="true">⬅</span> VOLTAR
                         </button>
                     </div>
@@ -416,7 +419,7 @@
                 </div>
 
                 <div id="next-btn-container" class="btn-wrapper hidden" style="margin-top: 10px;">
-                    <button class="comic-btn btn-start" onclick="nextQuestion()" aria-label="Próxima questão" style="max-width: 400px;">
+                    <button type="button" class="comic-btn btn-start" onclick="nextQuestion()" aria-label="Próxima questão" style="max-width: 400px;">
                         Próxima Questão <span aria-hidden="true">→</span>
                     </button>
                 </div>
@@ -433,13 +436,9 @@
                         <div class="title-line-1" id="final-score-text" style="margin-top: 20px; font-size: 2rem;">Você acertou<br>X de Y questões!</div>
                         <div class="title-line-2" id="final-percentage" style="font-size: 5rem; margin: 20px 0;">80%</div>
                         <p id="final-message" style="font-size: 1.5rem; font-family: sans-serif; font-weight: 700; line-height: 1.4; margin-top: 10px; max-width: 500px; margin-left: auto; margin-right: auto;"></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="buttons-container">
+                    </div></div></div></div><div class="buttons-container">
                 <div class="btn-wrapper">
-                    <button class="comic-btn btn-start" onclick="restartQuiz()" aria-label="Jogar Novamente" tabindex="0">
+                    <button type="button" class="comic-btn btn-start" onclick="restartQuiz()" aria-label="Jogar Novamente" tabindex="0">
                         <span class="btn-icon" aria-hidden="true">🔄</span> JOGAR NOVAMENTE
                     </button>
                 </div>
@@ -624,18 +623,38 @@
         let currentQuestionIndex = 0;
         let score = 0;
 
+
+        const DOM = {
+            screenInitial: document.getElementById('screen-initial'),
+            screenAbout: document.getElementById('about-screen'),
+            screenQuiz: document.getElementById('screen-quiz'),
+            screenFinal: document.getElementById('screen-final'),
+            questionCounter: document.getElementById('question-counter'),
+            progressBar: document.getElementById('progress-bar'),
+            questionText: document.getElementById('question-text'),
+            alternativesContainer: document.getElementById('alternatives-container'),
+            feedbackContainer: document.getElementById('feedback-container'),
+            nextBtnContainer: document.getElementById('next-btn-container'),
+            feedbackIcon: document.getElementById('feedback-icon'),
+            feedbackTitle: document.getElementById('feedback-title'),
+            feedbackText: document.getElementById('feedback-text'),
+            finalScoreText: document.getElementById('final-score-text'),
+            finalPercentage: document.getElementById('final-percentage'),
+            finalMessage: document.getElementById('final-message')
+        };
+
         function showAboutScreen() {
-            switchScreen('screen-initial', 'about-screen');
+            switchScreen(DOM.screenInitial, DOM.screenAbout);
         }
 
         function backToHome() {
-            switchScreen('about-screen', 'screen-initial');
+            switchScreen(DOM.screenAbout, DOM.screenInitial);
         }
 
         function startQuiz() {
             score = 0;
             currentQuestionIndex = 0;
-            switchScreen('screen-initial', 'screen-quiz', () => {
+            switchScreen(DOM.screenInitial, DOM.screenQuiz, () => {
                 loadQuestion();
             });
         }
@@ -644,22 +663,22 @@
             const questionData = questions[currentQuestionIndex];
             
             // Header e Progresso
-            document.getElementById('question-counter').innerText = `Questão ${currentQuestionIndex + 1} de ${questions.length}`;
+            DOM.questionCounter.textContent = `Questão ${currentQuestionIndex + 1} de ${questions.length}`;
             const progress = ((currentQuestionIndex) / questions.length) * 100;
-            document.getElementById('progress-bar').style.width = `${progress}%`;
+            DOM.progressBar.style.width = `${progress}%`;
 
             // Enunciado
-            const questionEl = document.getElementById('question-text');
+            const questionEl = DOM.questionText;
             questionEl.innerHTML = questionData.question.replace(/\n/g, '<br>');
 
             // Alternativas
-            const alternativesContainer = document.getElementById('alternatives-container');
+            const alternativesContainer = DOM.alternativesContainer;
             alternativesContainer.innerHTML = '';
             
             questionData.alternatives.forEach((altText, index) => {
                 const btn = document.createElement('button');
-                btn.className = 'comic-btn alternative-btn';
-                btn.innerText = altText;
+                btn.className = 'comic-btn alternative-btn';\n                btn.type = 'button';
+                btn.textContent = altText;
                 btn.setAttribute('aria-label', `Alternativa: ${altText}`);
                 btn.setAttribute('tabindex', '0');
                 btn.onclick = () => checkAnswer(index, btn);
@@ -667,8 +686,8 @@
             });
 
             // Ocultar feedback e botão próximo
-            document.getElementById('feedback-container').classList.add('hidden');
-            document.getElementById('next-btn-container').classList.add('hidden');
+            DOM.feedbackContainer.classList.add('hidden');
+            DOM.nextBtnContainer.classList.add('hidden');
         }
 
                 function checkAnswer(selectedIndex, selectedBtn) {
@@ -707,24 +726,24 @@
         }
 
         function showFeedback(feedbackData) {
-            const feedbackContainer = document.getElementById('feedback-container');
-            const feedbackIcon = document.getElementById('feedback-icon');
-            const feedbackTitle = document.getElementById('feedback-title');
-            const feedbackText = document.getElementById('feedback-text');
-            const nextBtnContainer = document.getElementById('next-btn-container');
+            const feedbackContainer = DOM.feedbackContainer;
+            const feedbackIcon = DOM.feedbackIcon;
+            const feedbackTitle = DOM.feedbackTitle;
+            const feedbackText = DOM.feedbackText;
+            const nextBtnContainer = DOM.nextBtnContainer;
 
             feedbackContainer.classList.remove('hidden', 'correct', 'incorrect');
             
             if (feedbackData.correct) {
                 feedbackContainer.classList.add('correct');
-                feedbackIcon.innerText = '✔';
+                feedbackIcon.textContent = '✔';
             } else {
                 feedbackContainer.classList.add('incorrect');
-                feedbackIcon.innerText = '✖';
+                feedbackIcon.textContent = '✖';
             }
 
-            feedbackTitle.innerText = feedbackData.title;
-            feedbackText.innerText = feedbackData.text;
+            feedbackTitle.textContent = feedbackData.title;
+            feedbackText.textContent = feedbackData.text;
 
             // Animação de entrada
             feedbackContainer.style.animation = 'none';
@@ -736,7 +755,7 @@
                 
                 // Progresso atualizado para indicar que a questão foi respondida
                 const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-                document.getElementById('progress-bar').style.width = `${progress}%`;
+                DOM.progressBar.style.width = `${progress}%`;
                 
                 nextBtnContainer.querySelector('button').focus();
             }, 300);
@@ -746,7 +765,7 @@
             currentQuestionIndex++;
             
             if (currentQuestionIndex < questions.length) {
-                const quizScreen = document.getElementById('screen-quiz');
+                const quizScreen = DOM.screenQuiz;
                 quizScreen.style.opacity = '0';
                 
                 setTimeout(() => {
@@ -761,8 +780,8 @@
         function finishQuiz() {
             const percentage = Math.round((score / questions.length) * 100);
             
-            document.getElementById('final-score-text').innerHTML = `Você acertou<br>${score} de ${questions.length} questões!`;
-            document.getElementById('final-percentage').innerText = `${percentage}%`;
+            DOM.finalScoreText.innerHTML = `Você acertou<br>${score} de ${questions.length} questões!`;
+            DOM.finalPercentage.textContent = `${percentage}%`;
             
             let message = "";
             if (percentage <= 30) {
@@ -775,25 +794,22 @@
                 message = "Parabéns! Você acertou todas as questões e demonstrou excelente domínio dos pronomes relativos.";
             }
             
-            document.getElementById('final-message').innerText = message;
+            DOM.finalMessage.textContent = message;
             
-            switchScreen('screen-quiz', 'screen-final');
+            switchScreen(DOM.screenQuiz, DOM.screenFinal);
         }
 
         function restartQuiz() {
-            switchScreen('screen-final', 'screen-initial');
+            switchScreen(DOM.screenFinal, DOM.screenInitial);
         }
 
-        function switchScreen(hideId, showId, callback) {
-            const hideEl = document.getElementById(hideId);
-            const showEl = document.getElementById(showId);
-            
+        function switchScreen(hideEl, showEl, callback) {
             hideEl.classList.remove('active');
-            
             setTimeout(() => {
                 if (callback) callback();
                 showEl.classList.add('active');
             }, 300);
+        }, 300);
         }
     </script>
 </body>

@@ -1,0 +1,351 @@
+    <script>
+        const questions = [
+            {
+                id: 1,
+                question: "Leia a frase:\n\n\"O livro que comprei ontem já está sobre a mesa.\"\n\nO pronome relativo presente na frase é:",
+                alternatives: [
+                    "A) livro",
+                    "B) comprei",
+                    "C) que",
+                    "D) ontem"
+                ],
+                correct: 2,
+                feedback: {
+                    0: { title: "Ops!", text: "Quase! \"Livro\" é um substantivo, pois nomeia um objeto. Quem faz a ligação entre \"livro\" e a oração \"comprei ontem\" é o pronome relativo que.", correct: false },
+                    1: { title: "Ops!", text: "Não foi dessa vez! \"Comprei\" é um verbo, indicando uma ação. O elemento responsável por retomar o antecedente \"livro\" é o pronome relativo que.", correct: false },
+                    2: { title: "Correto!", text: "Muito bem! O pronome relativo que retoma o substantivo \"livro\", evitando sua repetição e conectando as duas orações. Esse é o pronome relativo mais utilizado na língua portuguesa.", correct: true },
+                    3: { title: "Ops!", text: "Quase! \"Ontem\" é um advérbio de tempo. O pronome relativo é que, pois ele retoma o termo \"livro\" e estabelece a ligação entre as orações.", correct: false }
+                }
+            },
+            {
+                id: 2,
+                question: "Complete corretamente a frase.\n\n\"A professora ______ explicou o conteúdo recebeu muitos elogios.\"",
+                alternatives: [
+                    "A) onde",
+                    "B) que",
+                    "C) cujo",
+                    "D) quem"
+                ],
+                correct: 1,
+                feedback: {
+                    0: { title: "Ops!", text: "Atenção! O pronome onde é usado para indicar lugar. Como \"professora\" é uma pessoa, esse pronome não pode ser utilizado nessa frase.", correct: false },
+                    1: { title: "Correto!", text: "Parabéns! O pronome relativo que retoma \"professora\" e introduz a oração \"explicou o conteúdo\". A frase fica gramaticalmente correta e natural.", correct: true },
+                    2: { title: "Ops!", text: "Quase! O pronome cujo indica ideia de posse (\"o aluno cujo caderno...\"). Como não há relação de posse na frase, ele não é adequado.", correct: false },
+                    3: { title: "Ops!", text: "Boa tentativa! Embora quem possa retomar pessoas, ele normalmente aparece sem antecedente explícito ou precedido de preposição. Nesta frase, o uso esperado é que.", correct: false }
+                }
+            },
+            {
+                id: 3,
+                question: "Leia o período.\n\n\"Conheci o cientista que desenvolveu a pesquisa.\"\n\nO pronome relativo que retoma qual termo?",
+                alternatives: [
+                    "A) pesquisa",
+                    "B) conheci",
+                    "C) cientista",
+                    "D) desenvolveu"
+                ],
+                correct: 2,
+                feedback: {
+                    0: { title: "Ops!", text: "Observe com atenção! \"Pesquisa\" aparece depois do pronome relativo e não é o termo retomado. O pronome que faz referência ao \"cientista\".", correct: false },
+                    1: { title: "Ops!", text: "Quase! \"Conheci\" é um verbo. O antecedente de um pronome relativo costuma ser um substantivo ou pronome, e aqui é \"cientista\".", correct: false },
+                    2: { title: "Correto!", text: "Excelente! O pronome relativo que substitui \"cientista\", evitando repetir essa palavra na segunda oração.", correct: true },
+                    3: { title: "Ops!", text: "Ops!", text: "Não desta vez! \"Desenvolveu\" é um verbo. O pronome relativo retoma um termo anterior, que nesse caso é \"cientista\".", correct: false }
+                }
+            },
+            {
+                id: 4,
+                question: "Assinale a alternativa em que o pronome relativo foi empregado corretamente.",
+                alternatives: [
+                    "A) O computador quem travou será formatado.",
+                    "B) A cidade quem visitei é histórica.",
+                    "C) A professora de quem falei participará da reunião.",
+                    "D) O livro quem comprei era interessante."
+                ],
+                correct: 2,
+                feedback: {
+                    0: { title: "Ops!", text: "Atenção! O pronome quem é utilizado para pessoas, e \"computador\" não é uma pessoa. O correto seria \"o computador que travou\".", correct: false },
+                    1: { title: "Ops!", text: "Quase! \"Cidade\" representa um lugar. Além disso, quem não retoma lugares. O adequado seria usar que ou outra construção equivalente.", correct: false },
+                    2: { title: "Correto!", text: "Muito bem! O pronome relativo quem, precedido da preposição de, retoma corretamente o antecedente \"professora\". Esse é um uso previsto pela norma-padrão.", correct: true },
+                    3: { title: "Ops!", text: "Boa tentativa! \"Livro\" não é uma pessoa. Portanto, não pode ser retomado pelo pronome relativo quem.", correct: false }
+                }
+            },
+            {
+                id: 5,
+                question: "Complete corretamente a frase.\n\n\"A biblioteca ______ estudamos foi reformada este ano.\"",
+                alternatives: [
+                    "A) que",
+                    "B) cujo",
+                    "C) onde",
+                    "D) quem"
+                ],
+                correct: 2,
+                feedback: {
+                    0: { title: "Ops!", text: "Quase! Embora \"que\" possa aparecer em algumas construções com preposição (\"em que\"), nesta frase o pronome onde é a opção mais adequada, pois retoma um lugar.", correct: false },
+                    1: { title: "Ops!", text: "Atenção! O pronome cujo indica relação de posse entre dois substantivos. Como não há ideia de posse, ele não pode ser utilizado.", correct: false },
+                    2: { title: "Correto!", text: "Parabéns! O pronome relativo onde retoma corretamente o substantivo \"biblioteca\", que indica lugar. Ele estabelece a ligação entre as duas orações de forma adequada.", correct: true },
+                    3: { title: "Ops!", text: "Não desta vez! O pronome quem é empregado para retomar pessoas, enquanto \"biblioteca\" é um lugar. Por isso, o uso correto é onde.", correct: false }
+                }
+            },
+            {
+                id: 6,
+                question: "Assinale a alternativa em que o pronome relativo cujo foi empregado corretamente.",
+                alternatives: [
+                    "A) A aluna cujo o caderno desapareceu avisou a coordenação.",
+                    "B) A aluna cuja mochila desapareceu avisou a coordenação.",
+                    "C) A aluna que cuja mochila desapareceu avisou a coordenação.",
+                    "D) A aluna cuja a mochila desapareceu avisou a coordenação."
+                ],
+                correct: 1,
+                feedback: {
+                    0: { title: "Ops!", text: "Quase! O pronome cujo nunca é acompanhado por artigo (\"o\", \"a\", \"os\" ou \"as\"). O correto é dizer cuja mochila, e não cujo a mochila.", correct: false },
+                    1: { title: "Correto!", text: "Excelente! O pronome cuja estabelece uma relação de posse entre \"aluna\" e \"mochila\". Além disso, foi empregado sem artigo, como determina a norma-padrão.", correct: true },
+                    2: { title: "Ops!", text: "Atenção! Não é correto utilizar dois pronomes relativos juntos (\"que cuja\"). Deve-se usar apenas cuja.", correct: false },
+                    3: { title: "Ops!", text: "Boa tentativa! Assim como em \"cujo o\", a forma cuja a também está incorreta. Após cujo(a) não se utiliza artigo.", correct: false }
+                }
+            },
+            {
+                id: 7,
+                question: "Em qual alternativa o pronome relativo o qual foi empregado corretamente?",
+                alternatives: [
+                    "A) O relatório, o qual foi entregue ontem, será analisado hoje.",
+                    "B) O relatório, o qual ontem entreguei.",
+                    "C) O relatório o qual será.",
+                    "D) O relatório cujo será analisado."
+                ],
+                correct: 0,
+                feedback: {
+                    0: { title: "Correto!", text: "Muito bem! O pronome relativo o qual retoma \"relatório\" e introduz corretamente uma oração explicativa. O período está completo e gramaticalmente adequado.", correct: true },
+                    1: { title: "Ops!", text: "Quase! A frase ficou incompleta. Além disso, falta a continuação da oração principal para que o período faça sentido.", correct: false },
+                    2: { title: "Ops!", text: "Atenção! A construção está incompleta e não estabelece corretamente a ligação entre as orações.", correct: false },
+                    3: { title: "Ops!", text: "Não foi dessa vez! O pronome cujo indica posse e não pode substituir o qual nesse contexto.", correct: false }
+                }
+            },
+            {
+                id: 8,
+                question: "Leia o período.\n\n\"O atleta que venceu a competição recebeu uma medalha.\"\n\nO pronome relativo que tem a função de:",
+                alternatives: [
+                    "A) Indicar tempo.",
+                    "B) Retomar o antecedente \"atleta\".",
+                    "C) Expressar lugar.",
+                    "D) Indicar posse."
+                ],
+                correct: 1,
+                feedback: {
+                    0: { title: "Ops!", text: "Quase! O pronome que não indica tempo nessa frase. Sua função é retomar um termo já mencionado.", correct: false },
+                    1: { title: "Correto!", text: "Perfeito! O pronome relativo que substitui \"atleta\", evitando a repetição da palavra e conectando as duas orações.", correct: true },
+                    2: { title: "Ops!", text: "Atenção! Quem indica lugar normalmente é o pronome relativo onde. Nesta frase, que retoma \"atleta\".", correct: false },
+                    3: { title: "Ops!", text: "Boa tentativa! A ideia de posse é expressa por cujo(a). Aqui, que apenas retoma o antecedente.", correct: false }
+                }
+            },
+            {
+                id: 9,
+                question: "Leia a frase.\n\n\"Os estudantes de quem o professor falou receberam certificados.\"\n\nO pronome relativo quem refere-se a:",
+                alternatives: [
+                    "A) Professor.",
+                    "B) Certificados.",
+                    "C) Estudantes.",
+                    "D) Falou."
+                ],
+                correct: 2,
+                feedback: {
+                    0: { title: "Ops!", text: "Quase! O professor pratica a ação de falar, mas o pronome quem retoma o termo \"estudantes\".", correct: false },
+                    1: { title: "Ops!", text: "Atenção! \"Certificados\" aparece depois da oração relativa e não é o antecedente do pronome.", correct: false },
+                    2: { title: "Correto!", text: "Excelente! O pronome relativo quem, precedido da preposição de, retoma corretamente o substantivo \"estudantes\".", correct: true },
+                    3: { title: "Ops!", text: "Não desta vez! \"Falou\" é um verbo. O antecedente de um pronome relativo deve ser um termo nominal, como \"estudantes\".", correct: false }
+                }
+            },
+            {
+                id: 10,
+                question: "Assinale a alternativa em que o pronome relativo foi empregado de acordo com a norma-padrão.",
+                alternatives: [
+                    "A) Conheci a cidade quem recebe muitos turistas.",
+                    "B) Este é o aluno cujo pai é médico.",
+                    "C) A escola cujo a biblioteca foi reformada recebeu investimentos.",
+                    "D) O laboratório onde os pesquisadores desenvolveram o equipamento, cujo que será apresentado amanhã."
+                ],
+                correct: 1,
+                feedback: {
+                    0: { title: "Ops!", text: "Quase! O pronome quem é utilizado para retomar pessoas. Como \"cidade\" é um lugar, o correto seria usar que, onde ou outra construção equivalente.", correct: false },
+                    1: { title: "Correto!", text: "Parabéns! Você concluiu o desafio! O pronome cujo foi empregado corretamente para indicar posse entre \"aluno\" e \"pai\", sem o uso de artigo. Essa é uma das construções mais cobradas em provas.", correct: true },
+                    2: { title: "Ops!", text: "Atenção! Após cujo(a) nunca se utiliza artigo. O correto seria \"cuja biblioteca\".", correct: false },
+                    3: { title: "Ops!", text: "Boa tentativa! A frase apresenta dois problemas: o uso incorreto da sequência \"cujo que\" e uma construção incompleta. Deve-se utilizar apenas um pronome relativo, formando um período coerente.", correct: false }
+                }
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function showAboutScreen() {
+            switchScreen('screen-initial', 'about-screen');
+        }
+
+        function backToHome() {
+            switchScreen('about-screen', 'screen-initial');
+        }
+
+        function startQuiz() {
+            score = 0;
+            currentQuestionIndex = 0;
+            switchScreen('screen-initial', 'screen-quiz', () => {
+                loadQuestion();
+            });
+        }
+
+        function loadQuestion() {
+            const questionData = questions[currentQuestionIndex];
+            
+            // Header e Progresso
+            document.getElementById('question-counter').innerText = `Questão ${currentQuestionIndex + 1} de ${questions.length}`;
+            const progress = ((currentQuestionIndex) / questions.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+
+            // Enunciado
+            const questionEl = document.getElementById('question-text');
+            questionEl.innerHTML = questionData.question.replace(/\n/g, '<br>');
+
+            // Alternativas
+            const alternativesContainer = document.getElementById('alternatives-container');
+            alternativesContainer.innerHTML = '';
+            
+            questionData.alternatives.forEach((altText, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'comic-btn alternative-btn';
+                btn.innerText = altText;
+                btn.setAttribute('aria-label', `Alternativa: ${altText}`);
+                btn.setAttribute('tabindex', '0');
+                btn.onclick = () => checkAnswer(index, btn);
+                alternativesContainer.appendChild(btn);
+            });
+
+            // Ocultar feedback e botão próximo
+            document.getElementById('feedback-container').classList.add('hidden');
+            document.getElementById('next-btn-container').classList.add('hidden');
+        }
+
+                function checkAnswer(selectedIndex, selectedBtn) {
+            const questionData = questions[currentQuestionIndex];
+            const isCorrect = (selectedIndex === questionData.correct);
+            const feedbackData = questionData.feedback[selectedIndex];
+
+            if (isCorrect) score++;
+
+            // Desabilitar todas as opções
+            const buttons = document.querySelectorAll('.alternative-btn');
+            buttons.forEach((btn, index) => {
+                btn.classList.add('answer-disabled');
+                
+                if (index === selectedIndex) {
+                    // Animacao de clique
+                    btn.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        btn.style.transform = 'scale(1)';
+                    }, 200);
+
+                    if (isCorrect) {
+                        btn.classList.add('answer-correct');
+                        btn.innerHTML += '<span style="position: absolute; right: 16px; font-weight: bold; font-family: sans-serif;">✔</span>';
+                    } else {
+                        btn.classList.add('answer-wrong');
+                        btn.innerHTML += '<span style="position: absolute; right: 16px; font-weight: bold; font-family: sans-serif;">✖</span>';
+                    }
+                }
+            });
+
+            // Somente após mudança e animacao, exibe feedback
+            setTimeout(() => {
+                showFeedback(feedbackData);
+            }, 250);
+        }
+
+        function showFeedback(feedbackData) {
+            const feedbackContainer = document.getElementById('feedback-container');
+            const feedbackIcon = document.getElementById('feedback-icon');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackText = document.getElementById('feedback-text');
+            const nextBtnContainer = document.getElementById('next-btn-container');
+
+            feedbackContainer.classList.remove('hidden', 'correct', 'incorrect');
+            
+            if (feedbackData.correct) {
+                feedbackContainer.classList.add('correct');
+                feedbackIcon.innerText = '✔';
+            } else {
+                feedbackContainer.classList.add('incorrect');
+                feedbackIcon.innerText = '✖';
+            }
+
+            feedbackTitle.innerText = feedbackData.title;
+            feedbackText.innerText = feedbackData.text;
+
+            // Animação de entrada
+            feedbackContainer.style.animation = 'none';
+            feedbackContainer.offsetHeight; 
+            feedbackContainer.style.animation = null;
+
+            setTimeout(() => {
+                nextBtnContainer.classList.remove('hidden');
+                
+                // Progresso atualizado para indicar que a questão foi respondida
+                const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+                document.getElementById('progress-bar').style.width = `${progress}%`;
+                
+                nextBtnContainer.querySelector('button').focus();
+            }, 300);
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex < questions.length) {
+                const quizScreen = document.getElementById('screen-quiz');
+                quizScreen.style.opacity = '0';
+                
+                setTimeout(() => {
+                    loadQuestion();
+                    quizScreen.style.opacity = '1';
+                }, 300);
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function finishQuiz() {
+            const percentage = Math.round((score / questions.length) * 100);
+            
+            document.getElementById('final-score-text').innerHTML = `Você acertou<br>${score} de ${questions.length} questões!`;
+            document.getElementById('final-percentage').innerText = `${percentage}%`;
+            
+            let message = "";
+            if (percentage <= 30) {
+                message = "Continue estudando! Cada tentativa é uma oportunidade para aprender mais sobre os pronomes relativos.";
+            } else if (percentage <= 60) {
+                message = "Bom trabalho! Você já domina parte do conteúdo. Revise os pontos em que teve dificuldade e tente novamente.";
+            } else if (percentage < 100) {
+                message = "Muito bem! Você demonstrou um bom conhecimento sobre os pronomes relativos. Continue praticando para alcançar a pontuação máxima.";
+            } else {
+                message = "Parabéns! Você acertou todas as questões e demonstrou excelente domínio dos pronomes relativos.";
+            }
+            
+            document.getElementById('final-message').innerText = message;
+            
+            switchScreen('screen-quiz', 'screen-final');
+        }
+
+        function restartQuiz() {
+            switchScreen('screen-final', 'screen-initial');
+        }
+
+        function switchScreen(hideId, showId, callback) {
+            const hideEl = document.getElementById(hideId);
+            const showEl = document.getElementById(showId);
+            
+            hideEl.classList.remove('active');
+            
+            setTimeout(() => {
+                if (callback) callback();
+                showEl.classList.add('active');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
